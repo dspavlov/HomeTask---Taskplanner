@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * -просмотр всех подцелей из БД;
  * -добавление подцели в БД;
  * -редактирование подцели в БД;
+ * 
  */
 
 public class SubGoalService {
