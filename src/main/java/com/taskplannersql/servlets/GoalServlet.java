@@ -10,20 +10,16 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 /**
- * Сервлет служит для передачи всех целей на главную страницу mainPage.jsp
- * и для добавления новых целей.
+ * Сервлет служит для добавления новых целей.
  */
 @WebServlet("/goal")
 public class GoalServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("currentUser");
-
         req.setCharacterEncoding("UTF-8");
         String goalName = req.getParameter("goalname");
-
         GoalService.createGoal(goalName, user);
         resp.sendRedirect("/taskplannersql/task");
     }

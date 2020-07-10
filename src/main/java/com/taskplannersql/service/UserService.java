@@ -34,6 +34,7 @@ public class UserService {
             stmt.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
         return list;
     }
@@ -60,9 +61,8 @@ public class UserService {
             rs.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
-
-
         return basedPassword;
     }
 
@@ -85,6 +85,7 @@ public class UserService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }

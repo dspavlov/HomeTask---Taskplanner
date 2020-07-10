@@ -1,6 +1,5 @@
 package com.taskplannersql.service;
 
-import com.taskplannersql.beans.Goal;
 import com.taskplannersql.beans.SubGoal;
 
 import java.sql.*;
@@ -11,9 +10,7 @@ import java.util.ArrayList;
  * -просмотр всех подцелей из БД;
  * -добавление подцели в БД;
  * -редактирование подцели в БД;
- * 
  */
-
 public class SubGoalService {
     private static final String URL = "jdbc:postgresql://localhost:5432/tasks";
     private static final String ROOT_NAME = "task";
@@ -43,6 +40,7 @@ public class SubGoalService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -74,6 +72,7 @@ public class SubGoalService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
         return subGoalsFromSql;
     }
@@ -106,8 +105,10 @@ public class SubGoalService {
             prst2.close();
         } catch (IllegalArgumentException | SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
+
     /**
      * Удаляет подцель
      *
@@ -133,6 +134,7 @@ public class SubGoalService {
             prst2.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 }
