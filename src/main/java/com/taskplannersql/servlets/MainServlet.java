@@ -20,42 +20,35 @@ import java.util.ArrayList;
  * Сервлет служит для передачи всех задач и целей на главную страницу mainPage.jsp
  * и для добавления новых задач.
  */
-
 @WebServlet("/task")
-public class TaskPlannerServlet extends HttpServlet {
+public class MainServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("currentUser");
-
         ArrayList<Goal> goals = GoalService.readGoals(user);    //перечень целей
         req.setAttribute("goals", goals);
-
         ArrayList<SubGoal> subGoals = SubGoalService.readSubGoals(user);    //перечень подцелей
         req.setAttribute("subgoals", subGoals);
-
         ArrayList<Task> tasks = TaskService.readAllTasks(user); //перечень задач
         if (tasks.isEmpty()) {
-            String text = "Балдей! Задач пока нет!";
+            String text = "Задач пока нет!";
             req.setAttribute("text", text);
         } else {
             req.setAttribute("tasks", tasks);
         }
         getServletContext().getRequestDispatcher("/mainPage.jsp").forward(req, resp);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         HttpSession session = req.getSession();
         String user = (String) session.getAttribute("currentUser");
-
         req.setCharacterEncoding("UTF-8");
         String text = req.getParameter("task");
         String description = req.getParameter("description");
         String dateOfEnd = req.getParameter("dateofend");
         String idOfGoal = req.getParameter("idofgoal");
         String idOfSubGoal = req.getParameter("idofsubgoal");
-
         TaskService.createTask(text, description, dateOfEnd, idOfGoal, idOfSubGoal, user);
         resp.sendRedirect("/taskplannersql/task");
     }

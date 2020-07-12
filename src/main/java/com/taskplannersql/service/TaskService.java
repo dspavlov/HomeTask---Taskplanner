@@ -50,6 +50,7 @@ public class TaskService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
         return tasksFromSql;
     }
@@ -83,6 +84,7 @@ public class TaskService {
             prst.close();
         } catch (IllegalArgumentException | SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -106,6 +108,7 @@ public class TaskService {
             pest.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -138,6 +141,7 @@ public class TaskService {
             prst.close();
         } catch (IllegalArgumentException | SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
     }
 
@@ -173,6 +177,7 @@ public class TaskService {
             conn.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            throw new RuntimeException();
         }
         return task;
     }

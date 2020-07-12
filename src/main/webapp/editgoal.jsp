@@ -20,14 +20,12 @@
     <input type="hidden" name="idgoal" value="${param.editgoal}">
     <input type="submit" value="Добавить подцель">
 </form>
-
 <!-- Добавление новой задачи в цели -->
 <form action="addtask.jsp" method="post">
     <input type="hidden" name="editgoal" value="${param.editgoal}">
     <input type="hidden" name="idofgoal" value="${param.editgoal}">
     <input type="submit" value="Добавить задачу">
 </form>
-
 <!-- Удаление цели -->
 <h2>Удаление цели</h2>
 Так же удалит вложенные подцели и задачи

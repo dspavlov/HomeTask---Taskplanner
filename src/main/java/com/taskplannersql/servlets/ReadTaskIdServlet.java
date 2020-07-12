@@ -13,7 +13,6 @@ import java.io.IOException;
 /**
  * Сервлет служит для поиска задачи по ID.
  */
-
 @WebServlet("/readid")
 public class ReadTaskIdServlet extends HttpServlet {
     @Override

@@ -11,7 +11,6 @@ import java.io.IOException;
 /**
  * Сервлет служит для удаления задачи.
  */
-
 @WebServlet("/taskdel")
 public class TaskDeleteServlet extends HttpServlet {
     @Override
