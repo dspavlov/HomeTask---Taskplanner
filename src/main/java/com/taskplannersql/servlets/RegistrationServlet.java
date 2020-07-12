@@ -14,6 +14,7 @@ import java.util.ArrayList;
 /**
  * Сервлет служит для регистрации нового пользователя.
  */
+
 @WebServlet("/reg")
 public class RegistrationServlet extends HttpServlet {
     @Override

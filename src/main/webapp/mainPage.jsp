@@ -6,6 +6,7 @@
 </head>
 <body>
 <h1>Планировщик задач</h1>
+
 <h2>Цели</h2>
 <!-- Цели -->
 <c:forEach var="goal" items="${goals}">
@@ -71,7 +72,9 @@
     <input type="submit" value="Добавить цель">
 </form>
 <hr>
+
 <!-- Перечень всех задач -->
+
 <h2>Все задачи</h2>
 <table border="1">
     <tr>
@@ -84,6 +87,7 @@
         <td>Подцель</td>
         <td>Действия</td>
     </tr>
+
     <c:forEach var="task" items="${tasks}">
         <tr>
             <td>${task.getIdTask()}</td>
@@ -94,6 +98,7 @@
                 <c:if test="${task.isDone() == false}"><p>В работе</p></c:if></td>
             <td>${task.getGoal()}</td>
             <td>${task.getSubGoal()}</td>
+
             <td>
                 <!-- Удаление выбранной задачи -->
                 <form action="taskdel" method="post">
@@ -116,9 +121,11 @@
 </table>
 <p>${text}</p>
 <!-- Добавление новой задачи -->
+
 <form action="addtask.jsp" method="post">
     <input type="submit" value="Добавить задачу">
 </form>
+
 <!-- Поиск задачи по ID -->
 <form action="readid" method="get">
     Поиск задачи по ID:<input required type="text" name="id" autocomplete="off"><br>
@@ -126,7 +133,9 @@
 </form>
 <p>${task}</p>
 <hr>
+
 <!-- Выход из сервиса -->
+
 <form action="login" method="get">
     <input type="submit" value="Выйти">
 </form>

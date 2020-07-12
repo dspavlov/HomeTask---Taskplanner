@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Task implements Serializable {
+
     private int idTask;
     private String text;
     private String description;
@@ -11,9 +12,9 @@ public class Task implements Serializable {
     private boolean isDone;
     private String goal;
     private String subGoal;
+//    private String user;
 
-    public Task() {
-    }
+    public Task() {}
 
     public Task(int idTask, String text, String description, Date dateOfEnd, boolean isDone, String goal, String subGoal) {
         this.idTask = idTask;
@@ -22,8 +23,7 @@ public class Task implements Serializable {
         this.dateOfEnd = dateOfEnd;
         this.isDone = isDone;
         this.goal = goal;
-        this.subGoal = subGoal;
-    }
+        this.subGoal = subGoal;    }
 
     public int getIdTask() {
         return idTask;
@@ -33,9 +33,7 @@ public class Task implements Serializable {
         this.idTask = idTask;
     }
 
-    public String getText() {
-        return text;
-    }
+    public String getText() { return text; }
 
     public void setText(String text) {
         this.text = text;

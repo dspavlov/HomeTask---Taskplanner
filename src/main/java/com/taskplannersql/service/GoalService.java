@@ -11,10 +11,12 @@ import java.util.ArrayList;
  * -добавление цели в БД;
  * -редактирование цели в БД;
  */
+
 public class GoalService {
     private static final String URL = "jdbc:postgresql://localhost:5432/tasks";
     private static final String ROOT_NAME = "task";
     private static final String SQL_PASSWORD = "mypassword";
+
 
     /**
      * Возвращает список всех целей пользователя
@@ -22,7 +24,7 @@ public class GoalService {
      * @param user - пользователь сервиса
      * @return список целей
      */
-    public static ArrayList<Goal> readGoals(String user) {
+    public static ArrayList<Goal> readGoals(String user){
         ArrayList<Goal> goalsFromSql = new ArrayList<>();
         try {
             Class.forName("org.postgresql.Driver");
@@ -35,7 +37,7 @@ public class GoalService {
             PreparedStatement prst = conn.prepareStatement(sql);
             prst.setString(1, user);
             ResultSet rs = prst.executeQuery();
-            while (rs.next()) {
+            while (rs.next()){
                 String goalName = rs.getString("goal");
                 String subGoal = rs.getString("subgoal");
                 Goal goal = new Goal(goalName, subGoal);
@@ -44,7 +46,6 @@ public class GoalService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException();
         }
         return goalsFromSql;
     }
@@ -53,9 +54,9 @@ public class GoalService {
      * Создает новоую цель
      *
      * @param goalName - название цели
-     * @param user     - авторизованый пользователь
+     * @param user - авторизованый пользователь
      */
-    public static void createGoal(String goalName, String user) {
+    public static void createGoal(String goalName, String user){
         try {
             Class.forName("org.postgresql.Driver");
         } catch (ClassNotFoundException e) {
@@ -71,9 +72,9 @@ public class GoalService {
             prst.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException();
         }
     }
+
 
     /**
      * Удаляет цель
@@ -105,14 +106,12 @@ public class GoalService {
             prst3.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException();
         }
     }
-
     /**
      * Редактирует цель.
      *
-     * @param goalName    - название цели
+     * @param goalName - название цели
      * @param newGoalName - новое название цели
      */
     public static void editGoal(String goalName, String newGoalName) {
@@ -131,9 +130,9 @@ public class GoalService {
             PreparedStatement prst3 = conn.prepareStatement(sqlTasks);
             prst1.setString(1, newGoalName);
             prst1.setString(2, goalName);
-            prst2.setString(1, newGoalName);
+            prst2.setString(1,newGoalName);
             prst2.setString(2, goalName);
-            prst3.setString(1, newGoalName);
+            prst3.setString(1,newGoalName);
             prst3.setString(2, goalName);
             prst1.executeUpdate();
             prst2.executeUpdate();
@@ -143,7 +142,6 @@ public class GoalService {
             prst3.close();
         } catch (IllegalArgumentException | SQLException throwables) {
             throwables.printStackTrace();
-            throw new RuntimeException();
         }
     }
 }
