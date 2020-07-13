@@ -11,6 +11,7 @@ import java.util.ArrayList;
  * -добавление цели в БД;
  * -редактирование цели в БД;
  */
+//todo That's good that service is documented, the only concern here that is usually comments are written in English
 
 public class GoalService {
     private static final String URL = "jdbc:postgresql://localhost:5432/tasks";

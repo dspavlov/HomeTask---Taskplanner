@@ -12,6 +12,7 @@ public class Task implements Serializable {
     private boolean isDone;
     private String goal;
     private String subGoal;
+    //todo please avoid outcommented code, it is VCS based, so it is a bad practice
 //    private String user;
 
     public Task() {}
